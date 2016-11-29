@@ -9,6 +9,7 @@ import TutorOut from './src/components/Out/Out.jsx';
 import Student from './src/components/Student/Student.jsx';
 import StudentDetail from './src/components/Student/StudentDetail.jsx';
 import TutorDetail from './src/components/In/TutorDetail.jsx';
+import cookie from "js-cookie";
 
 
 const Routes = () =>
@@ -16,12 +17,12 @@ const Routes = () =>
     <Route path="/" component={Login}/>
     <Route path="/manage/*" component={Manage}/>
     <Route path="/login" component={Login}/>
-    <Route path="/manage/student" component={Student}/>
+    <Route path="/manage/student" component={Student} />
     <Route path="/manage/paper" component={Paper}/>
     <Route path="/manage/tutorin" component={TutorIn}/>
     <Route path="/manage/tutuorout" component={TutorOut}/>
     <Route path="/manage/studentdetail" component={StudentDetail}/>
-    <Route path="/manage/tutordetail" component={TutorDetail}/>
+    <Route path="/manage/studentlist/*" component={TutorDetail}/>
   </Router>
 
 

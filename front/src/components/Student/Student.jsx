@@ -47,7 +47,7 @@ class Student extends Component {
    	const columns = [{
 	  title: '学号',
 	  dataIndex: 'stu_id',
-	  render: text => <Link to={'/manage/studentdetail'+text}>{text}</Link>,
+	  render: text => <Link to={'/manage/studentdetail/'+text}>{text}</Link>,
 	}, {
 	  title: '姓名',
 	  dataIndex: 'stu_name',

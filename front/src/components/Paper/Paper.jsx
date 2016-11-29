@@ -45,7 +45,7 @@ class Paper extends Component {
             const columns = [{
               title: '论文编号',
               dataIndex: 'paper_id',
-              render: text => <a href="#">{text}</a>,
+              // render: text => <a href="#">{text}</a>,
             }, {
               title: '论文要求',
               dataIndex: 'paper_require',

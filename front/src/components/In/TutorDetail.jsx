@@ -12,6 +12,32 @@ const FormItem = Form.Item;
 
 class TutorDetail extends Component {
 
+  constructor(props){
+    super(props);
+    this.state={
+
+    };
+  }
+
+  loadList(){
+    var paths = window.location.href.split('/');
+    console.log(paths[6]+'  '+paths[7]);
+    fetch('http://localhost:3000/studentlist/'+paths[6]+'/'+paths[7],{
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+      })
+      .then(function(res){return res.json()})
+      .then(function(data){
+          console.log(data);
+    });
+  }
+
+  componentDidMount(props) {
+    this.loadList();
+  }
+
 
    render() {
 

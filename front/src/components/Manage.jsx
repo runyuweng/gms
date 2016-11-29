@@ -22,14 +22,14 @@ const Manage = ({ location }) => {
     'tutorin': <TutorIn paths={paths} />,
     'tutorout': <TutorOut paths={paths} />,
     'studentdetail':<StudentDetail paths={paths} />,
-    'tutordetail':<TutorDetail paths={paths} />
+    'studentlist':<TutorDetail paths={paths} />
   }[paths[2]], activeKey = {
     'student': 1,
     'paper':2,
     'tutorin':3,
     'tutorout':4,
     'studentdetail':5,
-    'tutordetail':6
+    'studentlist':6
   }[paths[2]];
 
 

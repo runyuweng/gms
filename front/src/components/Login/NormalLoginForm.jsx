@@ -4,6 +4,8 @@ import { hashHistory } from 'react-router';
 import './login.css';
 import auth from "../auth";
 import fetch from 'isomorphic-fetch';
+import cookie from "js-cookie";
+
 const FormItem = Form.Item;
 
 const warning = function () {
@@ -37,6 +39,7 @@ const NormalLoginForm = Form.create()(React.createClass({
         .then(function(data){
           console.log(data);
           if(data.code=="S01"){
+            cookie.set('username':values.username);
             success();
             hashHistory.push('/manage/student');
           }else{

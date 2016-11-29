@@ -45,7 +45,7 @@ class TutorIn extends Component {
             const columns = [{
               title: '导师编号',
               dataIndex: 'tutorin_id',
-              render: text => <a href="#">{text}</a>,
+              render: text => <Link to={'/manage/studentlist/tutorin/'+text}>{text}</Link>,
             }, {
               title: '姓名',
               dataIndex: 'tutorin_name',

@@ -12,6 +12,31 @@ const FormItem = Form.Item;
 
 class StudentDetail extends Component {
 
+  constructor(props){
+    super(props);
+    this.state={
+
+    };
+  }
+
+  loadStudent(){
+    var paths = window.location.href.split('/');
+    console.log(paths[6]);
+    fetch('http://localhost:3000/studentdetail/'+paths[6],{
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+      })
+      .then(function(res){return res.json()})
+      .then(function(data){
+          console.log(data);
+    });
+  }
+
+  componentDidMount(props) {
+    this.loadStudent();
+  }
 
    render() {
    

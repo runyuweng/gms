@@ -45,7 +45,7 @@ class TutorOut extends Component {
             const columns = [{
               title: '导师编号',
               dataIndex: 'tutorout_id',
-              render: text => <a href="#">{text}</a>,
+              render: text => <Link to={'/manage/studentlist/tutorout/'+text}>{text}</Link>,
             }, {
               title: '姓名',
               dataIndex: 'tutorout_name',
