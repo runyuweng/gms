@@ -23,7 +23,6 @@ router
         }else{
           var tutor = 'tutorout_id';
         }
-        var tutor = "tutorin_id";
         connection.query('select * from student where fk_'+tutor +'=' + req.params.tutorid
             , function(err, rows, fields) {
           if (err) throw err;
