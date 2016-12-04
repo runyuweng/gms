@@ -12,16 +12,16 @@ const FormItem = Form.Item;
 
 class TutorDetail extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-
+    this.state = {
+      list: [],
     };
   }
 
   loadList(){
+    var self = this;
     var paths = window.location.href.split('/');
-    console.log(paths[6]+'  '+paths[7]);
     fetch('http://localhost:3000/studentlist/'+paths[6]+'/'+paths[7],{
       method: 'GET',
       headers: {
@@ -30,7 +30,9 @@ class TutorDetail extends Component {
       })
       .then(function(res){return res.json()})
       .then(function(data){
-          console.log(data);
+          self.setState({
+            list:data.student
+          })
     });
   }
 
@@ -40,73 +42,42 @@ class TutorDetail extends Component {
 
 
    render() {
+    const self = this
+    const { list } = self.state;
 
     const columns = [{
-  title: 'Name',
-  dataIndex: 'name',
-  key: 'name',
-  render: text => <a href="#">{text}</a>,
-}, {
-  title: 'Age',
-  dataIndex: 'age',
-  key: 'age',
-}, {
-  title: 'Address',
-  dataIndex: 'address',
-  key: 'address',
-}, {
-  title: 'Action',
-  key: 'action',
-  render: (text, record) => (
-    <span>
-      <a href="#">Action 一 {record.name}</a>
-      <span className="ant-divider" />
-      <a href="#">Delete</a>
-      <span className="ant-divider" />
-      <a href="#" className="ant-dropdown-link">
-        More actions<Icon type="down" />
-      </a>
-    </span>
-  ),
-}];
-
-const data = [{
-  key: '1',
-  name: 'John Brown',
-  age: 32,
-  address: 'New York No. 1 Lake Park',
-}, {
-  key: '2',
-  name: 'Jim Green',
-  age: 42,
-  address: 'London No. 1 Lake Park',
-}, {
-  key: '3',
-  name: 'Joe Black',
-  age: 32,
-  address: 'Sidney No. 1 Lake Park',
-}];
-
+      title: '学生编号',
+      dataIndex: 'stu_id',
+      key: 'name',
+      render: text => <Link to={'/manage/studentdetail/'+text}>{text}</Link>,
+    }, {
+      title: '姓名',
+      dataIndex: 'stu_name'
+    }, {
+      title: '年龄',
+      dataIndex: 'stu_age'
+    }, {
+      title: '性别',
+      dataIndex: 'stu_sex'
+    }, {
+      title: '专业',
+      dataIndex: 'stu_major'
+    }, {
+      title: '籍贯',
+      dataIndex: 'stu_orign'
+    }];
    
 
       return (
         <div>
         <Row  className="mt20">
           <Col>
-            <div className="ant-search-input-wrapper" >
-              <InputGroup className={classNames.searchCls} className="mb20">
-                <Input />
-                <div className="ant-input-group-wrap">
-                  <Button icon="search" className={classNames.btnCls} size={classNames.size} />
-                </div>
-              </InputGroup>
-             </div>
             <Breadcrumb>
               <Breadcrumb.Item>主页</Breadcrumb.Item>
-              <Breadcrumb.Item><Link to="/manage/student">学生详细信息</Link></Breadcrumb.Item>
+              <Breadcrumb.Item><Link to="/manage/student">导师指导学生列表</Link></Breadcrumb.Item>
             </Breadcrumb>
             <div className="mt20"  style={{background:"#fff",padding:"20px",boxShadow:"2px 2px 2px #e9e9e9"}}>
-              <Table columns={columns} dataSource={data} />
+              <Table columns={columns} dataSource={list} />
             </div>
           </Col>
         </Row>

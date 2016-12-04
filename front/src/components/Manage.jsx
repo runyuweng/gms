@@ -8,7 +8,8 @@ import TutorIn from './In/In.jsx';
 import TutorDetail from './In/TutorDetail.jsx';
 import TutorOut from './Out/Out.jsx';
 import Nav from './Nav.jsx';
-
+import Search from './Search.jsx';
+import './public.css';
 const SubMenu = Menu.SubMenu;
  
 const Manage = ({ location }) => {
@@ -38,7 +39,7 @@ const Manage = ({ location }) => {
       <Row>
         <Col xs={{ span: 20, offset: 2 }} lg={{ span:16, offset: 4 }}>
           <div>
-           <Nav activeKey={activeKey}/>
+            <Nav activeKey={activeKey}/>
           </div>
         </Col>
         <Col xs={{ span: 20, offset: 2 }} lg={{ span:16, offset: 4 }}>

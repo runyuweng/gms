@@ -15,11 +15,22 @@ class StudentDetail extends Component {
   constructor(props){
     super(props);
     this.state={
-
+      stu_id:"",
+      stu_name:"",
+      stu_sex:"",
+      stu_age:"",
+      stu_major:"",
+      stu_orign:"",
+      com_name:"",
+      paper_title:"",
+      paper_require:"",
+      tutorin_name:"",
+      tutorout_name:""
     };
   }
 
   loadStudent(){
+    var self = this;
     var paths = window.location.href.split('/');
     console.log(paths[6]);
     fetch('http://localhost:3000/studentdetail/'+paths[6],{
@@ -30,7 +41,20 @@ class StudentDetail extends Component {
       })
       .then(function(res){return res.json()})
       .then(function(data){
-          console.log(data);
+          console.log(data.student.stu_name);
+          self.setState({
+            stu_id:data.student.stu_id,
+            stu_name:data.student.stu_name,
+            stu_sex:data.student.stu_sex,
+            stu_age:data.student.stu_age,
+            stu_major:data.student.stu_major,
+            stu_orign:data.student.stu_orign,
+            com_name:data.student.com_name,
+            paper_title:data.student.paper_title,
+            paper_require:data.student.paper_require,
+            tutorin_name:data.student.tutorin_name,
+            tutorout_name:data.student.tutorout_name
+          })
     });
   }
 
@@ -45,14 +69,6 @@ class StudentDetail extends Component {
         <div>
         <Row  className="mt20">
           <Col>
-            <div className="ant-search-input-wrapper" >
-              <InputGroup className={classNames.searchCls} className="mb20">
-                <Input />
-                <div className="ant-input-group-wrap">
-                  <Button icon="search" className={classNames.btnCls} size={classNames.size} />
-                </div>
-              </InputGroup>
-             </div>
             <Breadcrumb>
               <Breadcrumb.Item>主页</Breadcrumb.Item>
               <Breadcrumb.Item><Link to="/manage/student">学生详细信息</Link></Breadcrumb.Item>
@@ -61,45 +77,45 @@ class StudentDetail extends Component {
               <Row type="flex">
                 <Col span={6} order={4}>
                   <p>学号：
-                    <span>1</span>
+                    <span>{this.state.stu_id}</span>
                   </p>
                   <p>专业：
-                    <span>计算机</span>
+                    <span>{this.state.stu_major}</span>
                   </p>
                   <p>实习公司：
-                    <span>简寻</span>
+                    <span>{this.state.com_name}</span>
                   </p>
                 </Col>
 
 
                 <Col span={6} order={4}>
                   <p>姓名：
-                    <span>翁润雨</span>
+                    <span>{this.state.stu_name}</span>
                   </p>
                   <p>籍贯：
-                    <span>江苏</span>
+                    <span>{this.state.stu_orign}</span>
                   </p>
                   <p>指导老师：
-                    <span>周林</span>
+                    <span>{this.state.tutorin_name}{this.state.tutorout_name}</span>
                   </p>
                 </Col>
 
 
                 <Col span={6} order={4}>
                   <p>性别：
-                    <sapn>男</sapn>
+                    <sapn>{this.state.stu_sex}</sapn>
                   </p>
                   <p>论文题目：
-                    <span>react</span>
+                    <span>{this.state.paper_title}</span>
                   </p>
                 </Col>
 
                 <Col span={6} order={4}>
                   <p>年龄：
-                          <span>21</span>
+                          <span>{this.state.stu_age}</span>
                   </p>
                   <p>论文要求：
-                    <span>react</span>
+                    <span>{this.state.paper_require}</span>
                   </p>
                 </Col>
 

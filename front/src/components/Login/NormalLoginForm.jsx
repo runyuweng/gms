@@ -39,7 +39,8 @@ const NormalLoginForm = Form.create()(React.createClass({
         .then(function(data){
           console.log(data);
           if(data.code=="S01"){
-            cookie.set('username':values.username);
+            // document.cookie='username='+values.username;
+            auth.setCookie('username',values.username);
             success();
             hashHistory.push('/manage/student');
           }else{

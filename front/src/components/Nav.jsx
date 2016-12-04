@@ -10,6 +10,7 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 const Nav = React.createClass({
+
   handleClick(e) {
     console.log('click ', e);
     this.setState({
@@ -18,6 +19,7 @@ const Nav = React.createClass({
   //登出
     if(e.key == 'logout'){
       auth.logout(()=>{
+        auth.delCookie('username');
         hashHistory.push("/");
       });
     }

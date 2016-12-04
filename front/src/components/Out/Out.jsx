@@ -3,6 +3,7 @@ import { Router, Route, IndexRoute, Link } from 'react-router';
 import { Menu, Breadcrumb, Row, Col , Card, Form, Icon, Input, Button, Checkbox,Table } from 'antd';
 import classNames from 'classnames';
 import '../public.css';
+import Search from '../SearchTutorout.jsx';
 
 const InputGroup = Input.Group;
 
@@ -33,10 +34,13 @@ class TutorOut extends Component {
             });
     }
 
-      componentDidMount() {
+    componentDidMount() {
       this.loadAccounts();
     }
-
+    
+    onFind(result){
+      this.setState({list:result});
+    }
 
      render() {
             const self = this
@@ -92,22 +96,16 @@ class TutorOut extends Component {
                 <div>
                     <Row  className="mt20">
                       <Col>
-                          <Breadcrumb>
+                        <Breadcrumb>
                         <Breadcrumb.Item>主页</Breadcrumb.Item>
-                        <Breadcrumb.Item><Link to="/manage/tutorout">校外导师</Link></Breadcrumb.Item>
-                      </Breadcrumb>
-
-                      <div className="ant-search-input-wrapper" className="mt20" >
-                            <InputGroup className={classNames.searchCls}>
-                              <Input />
-                              <div className="ant-input-group-wrap">
-                                <Button icon="search" className={classNames.btnCls} size={classNames.size} />
-                              </div>
-                            </InputGroup>
-                           </div>
-                           <div className="mt20"  style={{background:"#fff",padding:"20px",boxShadow:"2px 2px 2px #e9e9e9"}}>
+                          <Breadcrumb.Item><Link to="/manage/tutorout">校外导师</Link></Breadcrumb.Item>
+                        </Breadcrumb>
+                        <div className="mt20">
+                            <Search onFind={this.onFind.bind(this)}/>
+                          </div>
+                          <div className="mt20"  style={{background:"#fff",padding:"20px",boxShadow:"2px 2px 2px #e9e9e9"}}>
                              <Table rowSelection={null} loading={false} columns={columns} dataSource={list}  />
-                           </div>
+                         </div>
                       </Col>
                     </Row>
                 </div>

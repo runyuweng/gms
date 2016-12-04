@@ -5,6 +5,8 @@ import Nav from '../Nav.jsx';
 import classNames from 'classnames';
 import '../public.css';
 import fetch from 'isomorphic-fetch';
+import ReactDOM from 'react-dom';
+import Search from '../Search.jsx';
 
 const InputGroup = Input.Group;
 
@@ -39,48 +41,53 @@ class Student extends Component {
     this.loadAccounts();
   }
 
+    onFind(result){
+      this.setState({list:result});
+    }
+
 
    render() {
-   	const self = this
-    	const { list } = self.state;
+    	const self = this
+    	const { list,search } = self.state;
 
-   	const columns = [{
-	  title: '学号',
-	  dataIndex: 'stu_id',
-	  render: text => <Link to={'/manage/studentdetail/'+text}>{text}</Link>,
-	}, {
-	  title: '姓名',
-	  dataIndex: 'stu_name',
-	}, {
-	  title: '性别',
-	  dataIndex: 'stu_sex',
-	}, {
-	  title: '年龄',
-	  dataIndex: 'stu_age',
-	}, {
-	  title: '专业',
-	  dataIndex: 'stu_major',
-	}, {
-	  title: '籍贯',
-	  dataIndex: 'stu_orign',
-	}];
-	// const data = [{
-	//   key: '1',
-	//   id:'1',
-	//   name: '翁润雨',
-	//   sex:"男",
-	//   age: 32,
-	//   major:'计科',
-	//   orign:'江苏',
-	//   company:'简寻'
-	// }];
+    	const columns = [{
+      title: '学号',
+      dataIndex: 'stu_id',
+      render: text => <Link to={'/manage/studentdetail/'+text}>{text}</Link>,
+    }, {
+      title: '姓名',
+      dataIndex: 'stu_name',
+    }, {
+      title: '性别',
+      dataIndex: 'stu_sex',
+    }, {
+      title: '年龄',
+      dataIndex: 'stu_age',
+    }, {
+      title: '专业',
+      dataIndex: 'stu_major',
+    }, {
+      title: '籍贯',
+      dataIndex: 'stu_orign',
+    }];
+    // const data = [{
+    //   key: '1',
+    //   id:'1',
+    //   name: '翁润雨',
+    //   sex:"男",
+    //   age: 32,
+    //   major:'计科',
+    //   orign:'江苏',
+    //   company:'简寻'
+    // }];
 
-	// rowSelection object indicates the need for row selection
-	const rowSelection = {
-	  getCheckboxProps: record => ({
-	    disabled: record.name === 'Jim Green',    // Column configuration not to be checked
-	  }),
-	};
+    // rowSelection object indicates the need for row selection
+    const rowSelection = {
+      getCheckboxProps: record => ({
+        disabled: record.name === 'Jim Green',    // Column configuration not to be checked
+      }),
+    };
+
 
 
       return (
@@ -91,18 +98,12 @@ class Student extends Component {
 		    <Breadcrumb.Item>主页</Breadcrumb.Item>
 		    <Breadcrumb.Item><Link to="/manage/student">学生</Link></Breadcrumb.Item>
 		  </Breadcrumb>
-
-		  <div className="ant-search-input-wrapper" className="mt20" >
-		        <InputGroup className={classNames.searchCls}>
-		          <Input />
-		          <div className="ant-input-group-wrap">
-		            <Button icon="search" className={classNames.btnCls} size={classNames.size} />
-		          </div>
-		        </InputGroup>
-	      	   </div>
-                            <div className="mt20"  style={{background:"#fff",padding:"20px",boxShadow:"2px 2px 2px #e9e9e9"}}>
-      	                 <Table rowSelection={null} loading={false} columns={columns} dataSource={list}  />
-                            </div>
+              <div className="mt20">
+                <Search onFind={this.onFind.bind(this)} />
+              </div>
+              <div className="mt20"  style={{background:"#fff",padding:"20px",boxShadow:"2px 2px 2px #e9e9e9"}}>
+                   <Table rowSelection={null} loading={false} columns={columns} dataSource={list}  />
+              </div>
 	      </Col>
 	    </Row>
 	</div>
