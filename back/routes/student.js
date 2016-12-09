@@ -3,9 +3,6 @@ var express = require('express'),
         connection = require("../mysql/db");
 
 router
-
-
-
     .get('/students',function(req,res,next){
         connection.query('select * from student'
             , function(err, rows, fields) {

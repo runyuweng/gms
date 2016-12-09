@@ -7,6 +7,7 @@ var cors = require('cors'),
     student = require('./routes/student');
     paper = require('./routes/paper'),
     tutorout = require('./routes/tutorout'),
+    search = require('./routes/search'),
     tutorin = require('./routes/tutorin');
 
 // app.use(bodyParser.json());
@@ -23,6 +24,7 @@ app.use(student);
 app.use(paper);
 app.use(tutorout);
 app.use(tutorin);
+app.use(search);
 
 
 app.get('/', function (req, res) {
