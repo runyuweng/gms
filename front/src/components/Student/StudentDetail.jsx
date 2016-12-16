@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Router, Route, IndexRoute, Link } from 'react-router';
 import { Menu, Breadcrumb, Row, Col , Card, Form, Icon, Input, Button, Checkbox,Table } from 'antd';
 import Nav from '../Nav.jsx';
+import UpdateStudent from './UpdateStudent.jsx';
 import classNames from 'classnames';
 import '../public.css';
 import fetch from 'isomorphic-fetch';
@@ -87,7 +88,6 @@ class StudentDetail extends Component {
                   </p>
                 </Col>
 
-
                 <Col span={6} order={4}>
                   <p>姓名：
                     <span>{this.state.stu_name}</span>
@@ -99,7 +99,6 @@ class StudentDetail extends Component {
                     <span>{this.state.tutorin_name}{this.state.tutorout_name}</span>
                   </p>
                 </Col>
-
 
                 <Col span={6} order={4}>
                   <p>性别：
@@ -118,11 +117,13 @@ class StudentDetail extends Component {
                     <span>{this.state.paper_require}</span>
                   </p>
                 </Col>
-
-
-
               </Row>
             </div>
+
+           <span className="mt20" style={{'display':'inline-block'}}>学生信息更新：</span>
+           <div className="mt20"  style={{background:"#fff",padding:"20px",boxShadow:"2px 2px 2px #e9e9e9"}}>
+              <UpdateStudent/>
+           </div>
 
           </Col>
         </Row>

@@ -11,9 +11,6 @@ router
         });
     })
 
-
-
-
     .get('/studentlist/:table/:tutorid',function(req,res,next){
         if(req.params.table=='tutorin'){
           var tutor = 'tutorin_id';
@@ -27,10 +24,6 @@ router
            res.send({"code":"S01","student":rows});
         });
     })
-
-
-
-
 
     .get('/studentdetail/:studentid',function(req,res,next){
       connection.query('select * from student where stu_id='+req.params.studentid
@@ -54,9 +47,26 @@ router
                  res.send({"code":"S01","student":rows[0]});
               });
           }
-          // if (err) throw err;
-          //  res.send({"code":"S01","student":rows});
-        });
+        })
+      })
 
-    })
+    .post('/deleteStudent',function(req,res,next){
+        var data = req.body;
+        var list =[];
+        for(var i=0;i<data.list.length;i=i+2){
+          list.push(data.list[i])
+        }
+        console.log(list);
+        for(var id of list){
+            connection.query('delete from student where stu_id="'+id+'"'
+                , function(err, rows, fields) {
+              if (err) throw err;
+              res.send("删除成功");
+            });
+        }
+    });
+
+
+
+
 module.exports = router;
