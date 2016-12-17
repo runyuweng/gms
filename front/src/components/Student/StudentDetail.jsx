@@ -40,22 +40,22 @@ class StudentDetail extends Component {
         "Content-Type": "application/x-www-form-urlencoded"
       }
       })
-      .then(function(res){return res.json()})
-      .then(function(data){
-          console.log(data.student.stu_name);
-          self.setState({
-            stu_id:data.student.stu_id,
-            stu_name:data.student.stu_name,
-            stu_sex:data.student.stu_sex,
-            stu_age:data.student.stu_age,
-            stu_major:data.student.stu_major,
-            stu_orign:data.student.stu_orign,
-            com_name:data.student.com_name,
-            paper_title:data.student.paper_title,
-            paper_require:data.student.paper_require,
-            tutorin_name:data.student.tutorin_name,
-            tutorout_name:data.student.tutorout_name
-          })
+    .then(function(res){return res.json()})
+    .then(function(data){
+        console.log(data.student.stu_name);
+        self.setState({
+          stu_id:data.student.stu_id,
+          stu_name:data.student.stu_name,
+          stu_sex:data.student.stu_sex,
+          stu_age:data.student.stu_age,
+          stu_major:data.student.stu_major,
+          stu_orign:data.student.stu_orign,
+          com_name:data.student.com_name,
+          paper_title:data.student.paper_title,
+          paper_require:data.student.paper_require,
+          tutorin_name:data.student.tutorin_name,
+          tutorout_name:data.student.tutorout_name
+        })
     });
   }
 
@@ -122,7 +122,7 @@ class StudentDetail extends Component {
 
            <span className="mt20" style={{'display':'inline-block'}}>学生信息更新：</span>
            <div className="mt20"  style={{background:"#fff",padding:"20px",boxShadow:"2px 2px 2px #e9e9e9"}}>
-              <UpdateStudent/>
+              <UpdateStudent stu_id={this.state.stu_id} onChange={()=>{this.loadStudent()}}/>
            </div>
 
           </Col>

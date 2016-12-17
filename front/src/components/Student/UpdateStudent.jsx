@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Router, Route, IndexRoute, Link } from 'react-router';
-import { Menu, Breadcrumb, Row, Col , Card, Form, Icon, Input, Button, Checkbox,Cascader,Table,Select,Tooltip } from 'antd';
+import { message,Menu, Breadcrumb, Row, Col , Card, Form, Icon, Input, Button, Checkbox,Cascader,Table,Select,Tooltip } from 'antd';
 import Nav from '../Nav.jsx';
 import classNames from 'classnames';
 import '../public.css';
@@ -12,13 +12,24 @@ const Option = Select.Option;
 
 const AdvancedSearchForm=React.createClass({
 
+
   handleSearch(e){
+    var self = this;
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      console.log('Received values of form: ', values);
+      fetch('http://localhost:3000/updateStudent',{
+        method: 'POST',
+        headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body:"stu_id="+this.props.stu_id+"&stu_name="+values.username+"&stu_age="+values.age+"&stu_major="+values.major+"&stu_orign"+values.place
+        })
+      .then(function(res){
+          self.props.onChange();
+          message.success('信息更新成功!');
+      })
     });
-    fetch()
-  },
+},
 
   handleReset(){
     this.props.form.resetFields();

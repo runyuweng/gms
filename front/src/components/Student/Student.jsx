@@ -7,6 +7,7 @@ import '../public.css';
 import fetch from 'isomorphic-fetch';
 import ReactDOM from 'react-dom';
 import Search from '../Search.jsx';
+import InsertStudent from './InsertStudent.jsx';
 
 const InputGroup = Input.Group;
 
@@ -45,8 +46,8 @@ class Student extends Component {
   }
 
     componentDidMount() {
-    this.loadAccounts();
-  }
+      this.loadAccounts();
+    }
 
     onFind(result){
       this.setState({list:result});
@@ -117,6 +118,10 @@ class Student extends Component {
                       disabled={!selectedRowKeys.length}>删除</Button>
                     </div>
                    <Table rowSelection={rowSelection} columns={columns} rowKey={record => record.stu_id} dataSource={list}  />
+              </div>
+              <span className="mt20" style={{'display':'inline-block'}}>插入学生信息：</span>
+              <div className="mt20"  style={{background:"#fff",padding:"20px",boxShadow:"2px 2px 2px #e9e9e9"}}>
+                <InsertStudent onChange={()=>{this.loadAccounts()}}/>
               </div>
 	      </Col>
 	    </Row>
