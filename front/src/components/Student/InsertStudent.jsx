@@ -107,35 +107,35 @@ const AdvancedSearchForm=React.createClass({
         <Row gutter={40}>
           <Col span={8} key={0}>
             <FormItem {...formItemLayout} label="姓名">
-                {getFieldDecorator('username')(
+                {getFieldDecorator('username',{rules:[{required:true, message: '请输入姓名'}]})(
                   <Input placeholder="姓名" />
                 )}
             </FormItem>
           </Col>
           <Col span={8} key={1}>
             <FormItem {...formItemLayout} label="性别">
-                {getFieldDecorator('sex')(
+                {getFieldDecorator('sex',{rules:[{required:true, message: '请输入性别'}]})(
                   <Input placeholder="性别" />
                 )}
             </FormItem>
           </Col>
           <Col span={8} key={2}>
             <FormItem {...formItemLayout} label="年龄">
-                {getFieldDecorator('age')(
+                {getFieldDecorator('age',{rules:[{required:true, message: '请输入年龄'}]})(
                   <Input placeholder="年龄" />
                 )}
             </FormItem>
           </Col>
           <Col span={8} key={3}>
             <FormItem {...formItemLayout} label="专业">
-                {getFieldDecorator('major')(
+                {getFieldDecorator('major',{rules:[{required:true, message: '请输入专业'}]})(
                   <Input placeholder="专业" />
                 )}
             </FormItem>
           </Col>
           <Col span={8} key={4}>
             <FormItem {...formItemLayout} label="籍贯">
-                {getFieldDecorator('place')(
+                {getFieldDecorator('place',{rules:[{required:true, message: '请输入籍贯'}]})(
                   <Input placeholder="籍贯" />
                 )}
             </FormItem>
@@ -149,14 +149,14 @@ const AdvancedSearchForm=React.createClass({
           </Col>
           <Col span={8} key={6}>
             <FormItem {...formItemLayout} label="论文">
-                {getFieldDecorator('paper_title')(
+                {getFieldDecorator('paper_title',{rules:[{required:true, message: '请输入论文题目'}]})(
                   <Input placeholder="论文题目" />
                 )}
             </FormItem>
           </Col>
           <Col span={16} key={7}>
             <FormItem {...formItemLayout} label="论文">
-                {getFieldDecorator('paper_require')(
+                {getFieldDecorator('paper_require',{rules:[{required:true, message: '请输入论文要求'}]})(
                   <Input placeholder="论文要求" />
                 )}
             </FormItem>
