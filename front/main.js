@@ -12,15 +12,15 @@ import TutorDetail from './src/components/In/TutorDetail.jsx';
 import auth from "./src/components/auth";
 
 function test(){
-    if(auth.getCookie('username')){
-
-    }else{
-        hashHistory.push("/login");
-    }
+    // if(auth.getCookie('username')){
+    //
+    // }else{
+    //     hashHistory.push("/login");
+    // }
 }
 const Routes = ({history}) =>
   <Router history={hashHistory}>
-    <Route path="/" component={Login} onEnter={test}/>
+    <Route path="/" component={Student} onEnter={test}/>
     <Route path="/manage/*" component={Manage} onEnter={test}/>
     <Route path="/login" component={Login}/>
     <Route path="/manage/student" component={Student} onEnter={test}/>
